@@ -1,5 +1,5 @@
-const loadAllPets = async() => {
-    const response = await fetch (`https://openapi.programming-hero.com/api/peddy/pets`)
+const loadAllPets = async () => {
+    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
     const data = await response.json();
     displayAllPets(data.pets)
 }
@@ -17,10 +17,10 @@ const displayAllPets = (allPet) => {
                     </figure>
                     <div class="card-body text-primary">
                         <h2 class="card-title text-black font-bold">${pet.pet_name}</h2>
-                        <p>Breed: ${pet.breed}</p>
-                        <p>Birth: ${pet.date_of_birth}</p>
-                        <p>Gender: ${pet.gender}</p>
-                        <p>Price: ${pet.price}$</p>
+                        <p>Breed: ${pet.breed ? pet.breed : "N/A"}</p>
+                        <p>Birth: ${pet.date_of_birth ? pet.date_of_birth : "N/A"}</p>
+                        <p>Gender: ${pet.gender ? pet.gender : "N/A"}</p>
+                        <p>Price: ${pet.price ? pet.price : "N/A"}$</p>
                         <hr>
                         <div class="card-actions place-content-evenly">
                             <button onclick="addBeside('${pet.image}')" class="btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -30,7 +30,7 @@ const displayAllPets = (allPet) => {
                                 </svg>
                             </button>
                             <button class="btn bg-white text-secondary  border border-secondary">Adopt</button>
-                            <button class="btn bg-white text-secondary  border border-secondary">Details</button>
+                            <button id='petDetailsBtn' class="btn bg-white text-secondary  border border-secondary" onclick= "petDetails('${pet.petId}')">Details</button>
                         </div>
                     </div>
                 </div>
@@ -48,9 +48,62 @@ const addBeside = (imagePet) => {
         <img src=${imagePet}
             alt="pet image" class="rounded-xl" />
     `
-
     addBesideContainer.appendChild(div);
 }
+
+
+
+const petDetails = async (petId) => {
+    console.log(petId)
+    const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+    console.log(response)
+    const dataTwo = await response.json();
+    console.log(dataTwo.petData)
+    displayPetDetails(dataTwo.petData)
+
+}
+
+const displayPetDetails = (petData) => {
+    document.getElementById("modalContainer").innerHTML = "";
+    const modalContainer = document.getElementById('modalContainer')
+
+    const div = document.createElement('div')
+    div.innerHTML = `
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box items-center">
+    <img class="w-full rounded-xl mb-2" src=${petData.image}
+        alt="pet image" class="rounded-xl" />
+    <h3 class="text-lg font-bold mb-2">${petData.pet_name}</h3>
+    <div class= "grid grid-cols-2 mb-2 gap-2 ">
+        <p>Breed: ${petData.breed ? petData.breed : "N/A"}</p>
+        <p>Birth: ${petData.date_of_birth ? petData.date_of_birth : "N/A"}</p>
+        <p>Gender: ${petData.gender ? petData.gender : "N/A"}</p>
+        <p>Price: ${petData.price ? petData.price : "N/A"}$</p>
+        <p>Vaccinated status: ${petData.vaccinated_status ? petData.vaccinated_status : "N/A"}</p>
+    </div>
+    <hr>
+    <h3 class="text-lg font-bold mt-2 mb-1">Details Information</h3>
+    <p class="py-4">${petData.pet_details}</p>
+    <div class="justify-center">
+      <form method="dialog">
+        <button class="btn w-full bg-teal-50 border-secondary text-secondary">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+    `
+    modalContainer.appendChild(div);
+    my_modal_5.showModal()
+
+}
+
+
+
+
+
+
+
+
 
 
 
