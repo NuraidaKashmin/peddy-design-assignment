@@ -10,6 +10,7 @@ const displayAllPets = (allPet) => {
 
     allPet.forEach(pet => {
         const div = document.createElement('div');
+        div.setAttribute("data-price", `${pet.price ? pet.price : 0}`);
         div.classList.add(`category-${pet.category}`);
 
         document.getElementById('cardContainer').classList.remove("hidden");
@@ -77,7 +78,6 @@ document.getElementById('catId').addEventListener('click', function () {
         document.getElementById('addBesideContainer').classList.remove("hidden")     
     },3000)
 
-    // loadPetsByCategory('Cat')
 })
 document.getElementById('rabbitId').addEventListener('click', function () {
     document.getElementById('cardContainer').classList.add("hidden")
@@ -92,7 +92,6 @@ document.getElementById('rabbitId').addEventListener('click', function () {
     },3000)
 
 
-    // loadPetsByCategory('Rabbit')
 })
 document.getElementById('birdsId').addEventListener('click', function () {
     document.getElementById('cardContainer').classList.add("hidden")
@@ -103,10 +102,11 @@ document.getElementById('birdsId').addEventListener('click', function () {
     setTimeout(function () {
         loadPetsByCategory('Birds')
         document.getElementById("spinner").style.display = "none";
-        document.getElementById('addBesideContainer').classList.remove("hidden")     
+        document.getElementById('addBesideContainer').classList.remove("hidden")
+             
     },3000)
+    
 
-    // loadPetsByCategory('Birds')
 })
 
 const loadPetsByCategory = async (categoryName) => {
@@ -132,9 +132,10 @@ const displayPetsByCategory = (allPet) => {
     }
     const cardContainer = document.getElementById('cardContainer');
     cardContainer.innerHTML = '';
-
+    
     allPet.forEach(pet => {
         const div = document.createElement('div');
+        div.setAttribute("data-price", `${pet.price ? pet.price : 0}`);
         div.classList.add(`category-${pet.category}`)
         div.innerHTML = `
         <div class="card bg-base-100 shadow-xl border">
@@ -285,16 +286,15 @@ document.querySelectorAll('.commonBtnHighlight').forEach(function (element) {
 
 
 
-// const spinnerShow = () => {
-//     document.getElementById('spinner').style.display = 'block';
-//     setTimeout(function(){
-//         loadPetsByCategory('Dog')
-
-//     }, 3000)
-// }
-
-
-
 
 loadAllPets()
 
+
+// reference - https://stackoverflow.com/questions/282670/easiest-way-to-sort-dom-nodes
+const list = document.querySelector('#cardContainer');
+
+function sortCards() {
+    [...list.children]
+  .sort((a, b) => parseInt(a.getAttribute("data-price")) < parseInt(b.getAttribute("data-price")) ? 1 : -1)
+  .forEach(node => list.appendChild(node));
+}
