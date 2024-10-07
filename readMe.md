@@ -1,8 +1,3 @@
-Project name.
-- Short description of the project.
-- 5 key features of the project.
-- ES6 features used.
-- Live link to the deployed project.
 
 - **Project name:** 
     Peddy Website Design
@@ -27,4 +22,4 @@ Project name.
     7. forEach()
 
 - **Live link to the deployed project**
-    
+
