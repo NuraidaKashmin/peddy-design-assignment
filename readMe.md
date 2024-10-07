@@ -22,4 +22,7 @@
     7. forEach()
 
 - **Live link to the deployed project**
+https://nuraida-peddy-website-design.netlify.app/
+
+
 
