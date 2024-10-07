@@ -13,7 +13,7 @@ const displayAllPets = (allPet) => {
         div.classList.add(`category-${pet.category}`);
 
         document.getElementById('cardContainer').classList.remove("hidden");
-        
+
         document.getElementById('birdsContainer').classList.remove('hidden');
         document.getElementById('birdsContainer').classList.add('hidden');
 
@@ -49,17 +49,64 @@ const displayAllPets = (allPet) => {
     });
 }
 
-document.getElementById('dogId').addEventListener('click', function(){
-    loadPetsByCategory('Dog')
+
+
+document.getElementById('dogId').addEventListener('click', function () {
+    document.getElementById('cardContainer').classList.add("hidden")
+    document.getElementById('addBesideContainer').classList.add("hidden")
+
+    document.getElementById('spinner').style.display = 'block';
+    
+    setTimeout(function () {
+        loadPetsByCategory('Dog')
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById('addBesideContainer').classList.remove("hidden")     
+    },3000)
+
+
 })
-document.getElementById('catId').addEventListener('click', function(){
-    loadPetsByCategory('Cat')
+document.getElementById('catId').addEventListener('click', function () {
+    document.getElementById('cardContainer').classList.add("hidden")
+    document.getElementById('addBesideContainer').classList.add("hidden")
+
+    document.getElementById('spinner').style.display = 'block';
+    
+    setTimeout(function () {
+        loadPetsByCategory('Cat')
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById('addBesideContainer').classList.remove("hidden")     
+    },3000)
+
+    // loadPetsByCategory('Cat')
 })
-document.getElementById('rabbitId').addEventListener('click', function(){
-    loadPetsByCategory('Rabbit')
+document.getElementById('rabbitId').addEventListener('click', function () {
+    document.getElementById('cardContainer').classList.add("hidden")
+    document.getElementById('addBesideContainer').classList.add("hidden")
+
+    document.getElementById('spinner').style.display = 'block';
+    
+    setTimeout(function () {
+        loadPetsByCategory('Rabbit')
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById('addBesideContainer').classList.remove("hidden")     
+    },3000)
+
+
+    // loadPetsByCategory('Rabbit')
 })
-document.getElementById('birdsId').addEventListener('click', function(){
-    loadPetsByCategory('Birds')
+document.getElementById('birdsId').addEventListener('click', function () {
+    document.getElementById('cardContainer').classList.add("hidden")
+    document.getElementById('addBesideContainer').classList.add("hidden")
+
+    document.getElementById('spinner').style.display = 'block';
+    
+    setTimeout(function () {
+        loadPetsByCategory('Birds')
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById('addBesideContainer').classList.remove("hidden")     
+    },3000)
+
+    // loadPetsByCategory('Birds')
 })
 
 const loadPetsByCategory = async (categoryName) => {
@@ -75,13 +122,13 @@ const displayPetsByCategory = (allPet) => {
     if (allPet.length === 0) {
         document.getElementById('cardContainer').classList.remove("hidden");
         document.getElementById('cardContainer').classList.add("hidden");
-        
+
         document.getElementById('birdsContainer').classList.remove('hidden');
     } else {
         document.getElementById('cardContainer').classList.remove("hidden");
-        
+
         document.getElementById('birdsContainer').classList.remove('hidden');
-        document.getElementById('birdsContainer').classList.add('hidden');   
+        document.getElementById('birdsContainer').classList.add('hidden');
     }
     const cardContainer = document.getElementById('cardContainer');
     cardContainer.innerHTML = '';
@@ -177,8 +224,8 @@ const displayPetDetails = (petData) => {
 
 const displayAdopt = (event) => {
     event.target.onclick = null;
-    event.target.innerHTML= `Adopted`
-    event.target.classList="btn text-white bg-gray-300 rounded focus:outline-none disabled"
+    event.target.innerHTML = `Adopted`
+    event.target.classList = "btn text-white bg-gray-300 rounded focus:outline-none disabled"
 
     document.getElementById("modalContainerTwo").innerHTML = "";
     const modalContainerTwo = document.getElementById('modalContainerTwo');
@@ -186,7 +233,7 @@ const displayAdopt = (event) => {
     let counter = 3;
 
     const div = document.createElement('div')
-    div.innerHTML=`
+    div.innerHTML = `
     <dialog id="my_modal_1" class="modal">
         <div class="modal-box text-center">
             <h3 class="text-3xl font-bold">Congratulation</h3>
@@ -197,37 +244,37 @@ const displayAdopt = (event) => {
     
     `
     modalContainerTwo.appendChild(div);
-    my_modal_1.showModal(); 
+    my_modal_1.showModal();
 
-    window.setTimeout(function() {
+    window.setTimeout(function () {
         counter--;
         document.getElementById("countdown").innerText = counter;
 
-        window.setTimeout(function() {
+        window.setTimeout(function () {
             counter--;
             document.getElementById("countdown").innerText = counter;
 
-            window.setTimeout(function() {
+            window.setTimeout(function () {
                 my_modal_1.close();
             }, 1000)
-    
+
         }, 1000)
 
-    }, 1000)   
+    }, 1000)
 
 
 }
 
 function removeCommonBtnHighlight() {
-    document.querySelectorAll('.commonBtnHighlight').forEach(function(element){
+    document.querySelectorAll('.commonBtnHighlight').forEach(function (element) {
         element.classList.remove("btn", "bg-teal-50", "rounded-full", "border-secondary", "border-2", "h-20", "gap-6")
         element.classList.add("btn", "bg-white", "border-2", "h-20", "gap-6")
 
     })
 }
 
-document.querySelectorAll('.commonBtnHighlight').forEach(function(element){
-    element.addEventListener('click', function(){
+document.querySelectorAll('.commonBtnHighlight').forEach(function (element) {
+    element.addEventListener('click', function () {
         removeCommonBtnHighlight()
 
         element.classList.remove("btn", "bg-white", "border-2", "h-20", "gap-6")
@@ -235,6 +282,16 @@ document.querySelectorAll('.commonBtnHighlight').forEach(function(element){
     })
 
 })
+
+
+
+// const spinnerShow = () => {
+//     document.getElementById('spinner').style.display = 'block';
+//     setTimeout(function(){
+//         loadPetsByCategory('Dog')
+
+//     }, 3000)
+// }
 
 
 
