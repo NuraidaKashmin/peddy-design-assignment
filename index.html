@@ -105,40 +105,61 @@
                 you find the perfect friend who will bring joy, comfort, and unconditional love into your life.</p>
         </div>
         <!-- adopt friends buttons -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
-            <button class="btn bg-white border-2 h-20 gap-6">
-                <img class="h-14" src="./images/shiba.png" alt="dogs">
-                <p class="text-xl font-bold">Dogs</p>
-            </button>
-            <!-- hidden button style -->
-            <button class="hidden btn bg-teal-50 rounded-full border-secondary border-2 h-20 gap-6">
+        <div id="adoptFriendBtn" class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+            <button id="dogId" class="commonBtnHighlight  btn bg-white border-2 h-20 gap-6">
                 <img class="h-14" src="./images/shiba.png" alt="dogs">
                 <p class="text-xl font-bold">Dogs</p>
             </button>
 
-            <button class="btn bg-white border-2 h-20 gap-6">
+            <button id="catId" class="commonBtnHighlight btn bg-white border-2 h-20 gap-6">
                 <img class="h-14" src="./images/kitty.png" alt="cats">
                 <p class="text-xl font-bold">Cats</p>
             </button>
-            <button class="btn bg-white border-2 h-20 gap-6">
+            <button id="rabbitId" class="commonBtnHighlight btn bg-white border-2 h-20 gap-6">
                 <img class="h-14" src="./images/rabbit.png" alt="rabbits">
                 <p class="text-xl font-bold">Rabbits</p>
             </button>
-            <button class="btn bg-white border-2 h-20 gap-6">
+            <button id="birdsId" class="commonBtnHighlight btn bg-white border-2 h-20 gap-6">
                 <img class="h-14" src="./images/parrot.png" alt="birds">
                 <p class="text-xl font-bold">Birds</p>
             </button>
+
+
         </div>
         <!-- best deal section -->
         <div class="flex justify-between items-center mb-14">
             <h2 class="text-2xl font-bold">Best Deal For You</h2>
             <button class="btn bg-secondary text-white text-lg">Sort by Price</button>
         </div>
+        <!-- spinner -->
+        <div id="spinner" class="text-center text-9xl hidden">
+            <span class="loading loading-bars loading-xs"></span>
+            <span class="loading loading-bars loading-sm"></span>
+            <span class="loading loading-bars loading-md"></span>
+            <span class="loading loading-bars loading-lg"></span>
+        </div>
+
+
+
         <!-- card & display container section -->
         <div class="grid lg:grid-cols-4 gap-6 mb-14">
+            <div id="birdsContainer" class="grid gap-6 lg:col-span-3 p-6">
+                <div>
+                    <img src="./images/error.webp" alt="pet image" class="rounded-xl" />
+                </div>
+                <h3 class="text-3xl font-bold mb-2">No Information Available</h3>
+                <p class="text-lg text-primary">We're working hard to gather details on pets available for adoption.
+                    Please check back soon for updates! In the meantime, feel free to explore other sections or contact
+                    us directly if you have any questions. Our goal is to help you find your perfect furry companion and
+                    start a lifelong friendship!</p>
+            </div>
+
+
             <div id="cardContainer" class="grid lg:grid-cols-3 gap-6 lg:col-span-3">
 
             </div>
+
+
             <div id="addBesideContainer"
                 class="grid grid-cols-2 auto-rows-min gap-2 p-2 border border-primary rounded-xl">
 
